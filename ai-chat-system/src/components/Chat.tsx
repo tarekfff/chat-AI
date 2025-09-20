@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { FaPaperPlane, FaPaperclip, FaTrash, FaRobot, FaUser } from "react-icons/fa";
