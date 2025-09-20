@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { FaPaperPlane, FaPaperclip, FaTrash, FaRobot, FaUser } from "react-icons/fa";
 import { ImSpinner8 } from "react-icons/im";
 import axios from "axios";
+import { AxiosResponse } from "axios";
 
 interface Message {
   sender: string;
@@ -122,11 +122,12 @@ export default function Chat() {
       }
 
       // Send to n8n webhook
-      const response = await axios.post(N8N_WEBHOOK_URL, payload, {
+
+      const response: AxiosResponse<any> = await axios.post(N8N_WEBHOOK_URL, payload, {
         headers: {
           "Content-Type": "application/json",
         },
-        timeout: 30000, // 30 second timeout
+        timeout: 30000,
       });
 
       // Handle different response formats from n8n
