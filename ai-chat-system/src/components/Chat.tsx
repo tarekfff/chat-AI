@@ -86,12 +86,22 @@ export default function Chat() {
 
   const sendToN8NWorkflow = async (message: string, file: File | null): Promise<string> => {
     try {
-      // Prepare payload for n8n
-      const payload: any = {
+      interface Payload {
+        message: string;
+        timestamp: string;
+        sessionId: string;
+        fileName?: string;
+        fileType?: string;
+        fileSize?: number;
+        fileContent?: string;
+      }
+
+      const payload: Payload = {
         message,
         timestamp: new Date().toISOString(),
-        sessionId: generateSessionId() // Generate a unique session ID
+        sessionId: generateSessionId(),
       };
+
 
       // If there's a file, handle it appropriately
       if (file) {
